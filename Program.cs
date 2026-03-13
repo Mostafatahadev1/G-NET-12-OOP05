@@ -79,7 +79,53 @@ namespace G_NET_12_OOP05
             // ((IArabicSpeaker)translator).Greet();  // Ahlan
             #endregion
 
+            #region Part 1 Q3
+            // A shallow copy creates a new object but copies the references of reference-type fields.
+            // This means both objects share the same referenced objects in memory.
 
+            // A deep copy creates a completely independent copy of the object,
+            // including new copies of all reference-type fields.
+
+            // When to use each:
+            // Shallow Copy: used when the object contains only value types or when
+            // sharing referenced objects is acceptable.
+
+            // Deep Copy: used when we need a completely independent object and
+            // changes in the copy should not affect the original object.
+
+            // Risk of using Shallow Copy:
+            // If the object contains reference-type fields, both the original object
+            // and the copied object will point to the same referenced data.
+            // Modifying the data in one object will also affect the other object.
+
+            #endregion
+
+            #region Part 1 Q4
+
+            /*
+            Output Explanation:
+            
+            class Department { public string Name; }
+            class Employee
+            {
+                public string Title;
+                public Department Dept;
+                public Employee ShallowCopy() => (Employee)this.MemberwiseClone();
+            }
+            
+            var e1 = new Employee { Title = "Dev", Dept = new Department { Name = "IT" } };
+            var e2 = e1.ShallowCopy();
+            e2.Title = "QA";
+            e2.Dept.Name = "Testing";
+            
+            // Shallow copy: e2 shares the same Dept object as e1
+            // Modifying e2.Dept.Name also changes e1.Dept.Name
+            // But e2.Title is independent
+            
+            Console.WriteLine($"{e1.Title} - {e1.Dept.Name}"); // Output: Dev - Testing
+            Console.WriteLine($"{e2.Title} - {e2.Dept.Name}"); // Output: QA  - Testing
+            */
+            #endregion
         }
     }
 }
